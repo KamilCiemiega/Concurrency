@@ -7,7 +7,7 @@ import java.util.Queue;
 record Order(int orderID, String shoeType, int orderQuantity){}
 
 class ShouWereHouse {
-    public static List<String> products = new LinkedList<>();
+    public final static List<String> products = new LinkedList<>();
     private Queue<Order> orders = new LinkedList<>();
     boolean fullListOfOrders = false;
     boolean listOfOrdersIsEmpty = true;
@@ -15,13 +15,13 @@ class ShouWereHouse {
     public ShouWereHouse() {}
 
     public synchronized void receiveOrder(Order order){
-        while (fullListOfOrders){
-            try {
-                wait();
-            }catch(InterruptedException e){
-                throw new RuntimeException(e);
-            }
-        }
+//        while (fullListOfOrders){
+//            try {
+//                wait();
+//            }catch(InterruptedException e){
+//                throw new RuntimeException(e);
+//            }
+//        }
 
         orders.add(order);
         System.out.println("Received order: " + order);
