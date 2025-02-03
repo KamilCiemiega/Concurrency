@@ -15,13 +15,13 @@ class ShouWereHouse {
     public ShouWereHouse() {}
 
     public synchronized void receiveOrder(Order order){
-//        while (fullListOfOrders){
-//            try {
-//                wait();
-//            }catch(InterruptedException e){
-//                throw new RuntimeException(e);
-//            }
-//        }
+        while (fullListOfOrders){
+            try {
+                wait();
+            }catch(InterruptedException e){
+                throw new RuntimeException(e);
+            }
+        }
 
         orders.add(order);
         System.out.println("Received order: " + order);
@@ -56,6 +56,8 @@ class ShouWereHouse {
         notifyAll();
     }
 }
+
+
 
 class Producer implements Runnable{
     private ShouWereHouse shouWereHouse;
