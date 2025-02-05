@@ -30,10 +30,10 @@ public class ShoeWarehouse {
                 throw new RuntimeException(e);
             }
         }
-        shippingItems.add(item);
-        System.out.println("Incoming: " + item);
-        fulfillmentService.submit(this::fulfillOrder);
-        notifyAll();
+//        shippingItems.add(item);
+//        System.out.println("Incoming: " + item);
+//        fulfillmentService.submit(this::fulfillOrder);
+//        notifyAll();
     }
 
     public synchronized Order fulfillOrder() {
